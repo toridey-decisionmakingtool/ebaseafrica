@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toride Decision Making Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f2e6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 20px auto;
+        }
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        select, input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .response {
+            text-align: center;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Toride Decision Making Tool</h1>
+</header>
+
+<img src="Story telling compass (2).png" alt="Tori Dey Compass">
+
+<form id="torideForm" action="https://formspree.io/f/xblkjnad" method="POST">
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Institution/Affiliation:</label>
+    <input type="text" name="institution">
+
+    <label>Country:</label>
+    <input type="text" name="country">
+
+    <label>What do you want the story to be about?</label>
+    <select name="story_type" id="storyType" onchange="generateRecommendation()" required>
+        <option value="">No Response</option>
+        <option value="process">The approach and methodology we employed/the way we did our work</option>
+        <option value="narrative">The way we worked and the results</option>
+        <option value="impact">The impact of our work on People’s lives</option>
+        <option value="creative">How scientific data can elicit artistic creativity</option>
+    </select>
+
+    <div class="response" id="recommendation"></div>
+
+    <input type="hidden" name="_language" value="en">
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    function generateRecommendation() {
+        const type = document.getElementById('storyType').value;
+        const recommendationDiv = document.getElementById('recommendation');
+        let recommendation = "";
+
+        if (type === "process") {
+            recommendation = "Recommended Story Type: Process Story. eBASE Africa has received your submission and will work with you to bring your story to life.";
+        } else if (type === "narrative") {
+            recommendation = "Recommended Story Type: Narrative Story. eBASE Africa has received your submission and will work with you to bring your story to life.";
+        } else if (type === "impact") {
+            recommendation = "Recommended Story Type: Impact Story. eBASE Africa has received your submission and will work with you to bring your story to life.";
+        } else if (type === "creative") {
+            recommendation = "Recommended Story Type: Creative Story. eBASE Africa has received your submission and will work with you to bring your story to life.";
+        } else {
+            recommendation = "";
+        }
+
+        recommendationDiv.textContent = recommendation;
+    }
+</script>
+
+</body>
+</html>
